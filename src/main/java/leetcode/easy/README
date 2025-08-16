@@ -1,0 +1,45 @@
+Merge Two 2D Arrays by Summing Value
+
+Problem Description
+The goal of this task is to merge two 2D integer arrays, nums1 and nums2, based on their unique IDs. Each inner array [id, value] represents an item with a specific ID and its corresponding value.
+
+The merging process follows two rules:
+
+If an id exists in only one of the arrays, it should be included in the final result with its original value.
+
+If an id exists in both arrays, the final result should contain that id with a value that is the sum of the values from both arrays.
+
+The final array should be sorted in ascending order based on the id.
+
+Solution Approach
+The problem was solved using the classic Two-Pointers Algorithm, which is highly efficient for working with two sorted collections.
+
+Initialization:
+
+Two pointers, p1 and p2, are initialized to point to the beginning of nums1 and nums2 respectively.
+
+An ArrayList is used to store the merged results, as the final size is not known in advance.
+
+Main Loop:
+
+A while loop runs as long as there are elements to compare in both arrays (p1 < nums1.length && p2 < nums2.length).
+
+Inside the loop, we compare the IDs at the current pointers:
+
+If nums1[p1][0] < nums2[p2][0], the element from nums1 is smaller. We add it to the result list and advance p1.
+
+If nums1[p1][0] > nums2[p2][0], the element from nums2 is smaller. We add it to the result list and advance p2.
+
+If the IDs are equal, we sum their values, create a new [id, sum] pair, add it to the result list, and advance both pointers (p1 and p2).
+
+Handling Remaining Elements:
+
+After the main loop finishes, one of the arrays might still have remaining elements (the "tail").
+
+Two separate while loops are used to add any leftover elements from nums1 or nums2 to the result list. Only one of these loops will actually execute.
+
+Final Conversion:
+
+Finally, the ArrayList is converted back to the required int[][] format.
+
+This approach ensures a time complexity of O(N + M), where N and M are the lengths of the input arrays, as we iterate through each array only once.
